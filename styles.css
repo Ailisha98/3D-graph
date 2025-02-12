@@ -1,0 +1,98 @@
+/* Stile generale */
+html, body {
+    height: 100vh; /* Occupa tutta l'altezza della finestra */
+    width: 100vw; /* Occupa tutta la larghezza */
+    overflow: hidden; /* Evita la barra di scorrimento */
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background-color: #1e1e1e;
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* Titolo */
+h1 {
+    font-size: 20px;
+    margin: 25px;
+}
+
+/* Contenitore principale */
+.container {
+    display: flex;
+    flex-direction: row; /* Disposizione orizzontale */
+    justify-content: space-between;
+    align-items: center;
+    width: 90vw;
+    height: 85vh;
+    padding: 10px;
+}
+
+/* Contenitore dei controlli (a sinistra) */
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #2b2b2b;
+    padding: 15px;
+    border-radius: 10px;
+    width: 250px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+/* Parametri (disposti verticalmente) */
+.control-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Etichette dei parametri */
+label {
+    font-size: 14px;
+    font-weight: normal;
+    margin-right: 10px;
+    white-space: nowrap; /* Impedisce che il testo vada a capo */
+}
+
+/* Slider */
+input[type="range"] {
+    flex-grow: 1;
+    max-width: 140px;
+    -webkit-appearance: none;
+    background: #444;
+    height: 5px;
+    border-radius: 3px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #ff9800;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Valore accanto allo slider */
+span {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+/* Contenitore del grafico (a destra) */
+#grafico {
+    flex-grow: 1; /* Permette al grafico di occupare tutto lo spazio disponibile */
+    height: 90vh; /* Assicura un'altezza corretta */
+    min-width: 500px; /* Impedisce che il grafico sia troppo piccolo */
+    background-color: #252525;
+    border-radius: 10px;
+    padding: 5px;
+}
