@@ -1,98 +1,162 @@
 /* Stile generale */
 html, body {
-    height: 100vh; /* Occupa tutta l'altezza della finestra */
-    width: 100vw; /* Occupa tutta la larghezza */
-    overflow: hidden; /* Evita la barra di scorrimento */
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     font-family: 'Arial', sans-serif;
     text-align: center;
     background-color: #1e1e1e;
     color: white;
-    margin: 0;
-    padding: 0;
+    overflow: auto;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
+    box-sizing: border-box;
 }
 
 /* Titolo */
 h1 {
     font-size: 20px;
-    margin: 25px;
+    margin: 20px 10px;
 }
 
 /* Contenitore principale */
 .container {
     display: flex;
-    flex-direction: row; /* Disposizione orizzontale */
-    justify-content: space-between;
-    align-items: center;
-    width: 90vw;
-    height: 85vh;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
     padding: 10px;
+    box-sizing: border-box;
 }
 
-/* Contenitore dei controlli (a sinistra) */
+/* Pannello slider (a sinistra, desktop) */
 .controls {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    width: 350px;
+    min-width: 350px;
+    max-width: 350px;
+    flex: 0 0 auto;
     background-color: #2b2b2b;
-    padding: 15px;
+    padding: 20px;
     border-radius: 10px;
-    width: 250px;
     height: 100%;
     overflow-y: auto;
+    box-sizing: border-box;
 }
 
-/* Parametri (disposti verticalmente) */
+/* Gruppi slider */
 .control-group {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
     margin-bottom: 10px;
+    flex-wrap: nowrap;
 }
 
-/* Etichette dei parametri */
+/* Etichette */
 label {
     font-size: 14px;
-    font-weight: normal;
-    margin-right: 10px;
-    white-space: nowrap; /* Impedisce che il testo vada a capo */
+    width: 40px;
+    margin-right: 8px;
+    text-align: right;
 }
 
 /* Slider */
 input[type="range"] {
     flex-grow: 1;
-    max-width: 140px;
+    width: 100%;
+    max-width: none;
+    height: 8px;
     -webkit-appearance: none;
     background: #444;
-    height: 5px;
     border-radius: 3px;
+    touch-action: none;
 }
 
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
     background: #ff9800;
     border-radius: 50%;
     cursor: pointer;
 }
 
-/* Valore accanto allo slider */
+/* Valori accanto allo slider */
 span {
-    margin-left: 10px;
+    width: 40px;
+    text-align: left;
+    margin-left: 8px;
     font-size: 14px;
 }
 
-/* Contenitore del grafico (a destra) */
+/* Contenitore del grafico */
 #grafico {
-    flex-grow: 1; /* Permette al grafico di occupare tutto lo spazio disponibile */
-    height: 90vh; /* Assicura un'altezza corretta */
-    min-width: 500px; /* Impedisce che il grafico sia troppo piccolo */
+    flex-grow: 1;
+    min-width: 0;
+    height: 100%;
     background-color: #252525;
     border-radius: 10px;
     padding: 5px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Responsive: layout mobile */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .controls {
+        width: 90vw;
+        max-width: 350px;
+        height: auto;
+        max-height: 30vh;
+        margin: 0 auto 10px auto;
+        overflow-y: auto;
+        padding: 10px;
+    }
+
+    .control-group {
+        margin-bottom: 6px;
+    }
+
+    #grafico {
+        width: 100vw;
+        height: 65vh;
+    }
+
+    input[type="range"] {
+        height: 20px;
+    }
+
+    h1 {
+        font-size: 18px;
+        margin: 15px 5px;
+    }
+
+    html, body {
+        overflow: auto !important;
+    }
+}
+.control-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+}
+
+.control-group span.min-value,
+.control-group span.max-value {
+    font-size: 12px;
+    width: 20px;
+    text-align: center;
+    color: #bbb;
 }

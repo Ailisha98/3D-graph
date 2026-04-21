@@ -3,38 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grafico 3D Interattivo</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Policy Success Estimation</title>
+    <script src="https://cdn.plot.ly/plotly-2.20.0.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Titolo principale centrato sopra tutto -->
-    <h1 class="title">3D graph of function t</h1>
+    <h1 class="title">Policy Success Estimation</h1>
 
     <div class="container">
-        <!-- Contenitore dei parametri (a sinistra) -->
+        <!-- Controlli per selezionare le variabili -->
         <div class="controls">
+            
+            <!-- Selezione delle variabili per il grafico -->
             <div class="control-group">
-                <label for="n">Parameter n:</label>
-                <input type="range" id="n" min="1" max="100" step="1" value="1" oninput="updateGraph()">
-                <span id="n-value">2</span>
+                <label>Solve for:</label>
+                <label><input type="checkbox" class="var-select" value="r"> r</label>
+                <label><input type="checkbox" class="var-select" value="a"> a</label>
+                <label><input type="checkbox" class="var-select" value="n"> n</label>
+                <label><input type="checkbox" class="var-select" value="m"> m</label>
             </div>
 
+            <!-- Sliders per le variabili fisse -->
+            <div id="fixed-values">
+                <div class="control-group slider-container" id="r-slider">
+                    <label for="r">Fixed r:</label>
+                    <input type="range" id="r" min="0.0001" max="1" step="0.01" value="0.5" oninput="updateGraph()">
+                    <span id="r-value">0.5</span>
+                </div>
+
+                <div class="control-group slider-container" id="a-slider">
+                    <label for="a">Fixed a:</label>
+                    <input type="range" id="a" min="0.0001" max="1" step="0.01" value="0.5" oninput="updateGraph()">
+                    <span id="a-value">0.5</span>
+                </div>
+
+                <div class="control-group slider-container" id="n-slider">
+                    <label for="n">Fixed n:</label>
+                    <input type="range" id="n" min="1" max="100" step="1" value="1" oninput="updateGraph()">
+                    <span id="n-value">1</span>
+                </div>
+
+                <div class="control-group slider-container" id="m-slider">
+                    <label for="m">Fixed m:</label>
+                    <input type="range" id="m" min="0" max="1" step="0.01" value="0.0" oninput="updateGraph()">
+                    <span id="m-value">0.0</span>
+                </div>
+            </div>
+
+            <!-- Threshold g sempre visibile -->
             <div class="control-group">
                 <label for="g">Threshold g:</label>
                 <input type="range" id="g" min="0" max="1" step="0.01" value="0.8" oninput="updateGraph()">
                 <span id="g-value">0.8</span>
             </div>
 
-            <div class="control-group">
-                <label for="m">Parameter m:</label>
-                <input type="range" id="m" min="0" max="1" step="0.01" value="0.0" oninput="updateGraph()">
-                <span id="m-value">0.0</span>
-            </div>
         </div>
 
-        <!-- Contenitore del grafico (a destra) -->
         <div id="grafico"></div>
     </div>
     
