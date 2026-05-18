@@ -12,7 +12,7 @@ function isValidRA(params) {
 }
 
 let currentFixedValues = JSON.parse(localStorage.getItem('fixedValues')) || {
-    r: 0.5, a: 0.49, n: 10, m: 0.5, g: 0.5
+    r: 0.5, a: 0.4, n: 10, m: 0.5, g: 0.5
 };
 
 let lastCameraView = null; // Non carichiamo nulla da localStorage inizialmente
